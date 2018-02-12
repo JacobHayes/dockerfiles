@@ -1,4 +1,4 @@
-# TAG jacobhayes:octave
+# TAG jacobhayes/octave
 #
 #  docker run \
 #    --rm \
@@ -13,5 +13,12 @@ LABEL version $VERSION
 
 # Octave requires a full less version (busybox version is missing args)
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-    apk add --no-cache less gnuplot "octave==$VERSION" texinfo ttf-inconsolata
+    apk add --no-cache \
+        ghostscript \
+        gnuplot \
+        less \
+        octave==$VERSION \
+        texinfo \
+        ttf-inconsolata \
+    && true
 ENTRYPOINT ["octave-cli"]
