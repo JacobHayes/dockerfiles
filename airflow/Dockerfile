@@ -11,7 +11,7 @@ RUN apt-get update && \
 
 # APT Requirements
 COPY apt-requirements.txt "${WORKDIR}"
-RUN apt-get -y update \
+RUN apt-get update \
   && xargs apt-get install -y < apt-requirements.txt \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get clean
