@@ -3,6 +3,8 @@ FROM debian:stretch
 ENV BUILDDIR="/usr/src/build/" \
     WORKDIR="/usr/src/app/"
 RUN mkdir -p "${BUILDDIR}" "${WORKDIR}"
+WORKDIR "${BUILDDIR}"
+
 RUN apt-get update && \
     apt-get install -y python3 python3-pip && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
