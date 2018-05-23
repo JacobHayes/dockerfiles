@@ -2,7 +2,6 @@ FROM debian:stretch
 
 ENV BUILDDIR="/usr/src/build/" \
     WORKDIR="/usr/src/app/"
-RUN mkdir -p "${BUILDDIR}" "${WORKDIR}"
 WORKDIR "${BUILDDIR}"
 
 RUN apt-get update && \
@@ -24,5 +23,5 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
 WORKDIR "${WORKDIR}"
-COPY entrypoint.sh /entrypoint.sh
+COPY create-user.py entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
