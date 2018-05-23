@@ -23,5 +23,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
 WORKDIR "${WORKDIR}"
-COPY create-user.py entrypoint.sh /
+COPY create-user /usr/local/bin/
+COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
