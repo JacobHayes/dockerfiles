@@ -36,13 +36,13 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         "--email",
-        default=os.getenv("email"),
-        required=not(os.getenv("email")),
+        default=os.getenv("EMAIL"),
+        required=not(os.getenv("EMAIL")),
     )
     parser.add_argument(
         "--password",
-        default=os.getenv("password"),
-        required=not(os.getenv("password")),
+        default=os.getenv("PASSWORD"),
+        required=not(os.getenv("PASSWORD")),
     )
     args = parser.parse_args()
     create(args.username, args.email, args.password)
