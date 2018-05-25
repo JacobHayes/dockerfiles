@@ -21,9 +21,7 @@ def create(username, email, password, passive=True):
     user = PasswordUser(models.User())
     user.username = username
     user.email = email
-    # This should be: user.password = password
-    # Seems SQLA broke things in 1.2 with `hybrid_property`s. Could lower that version, or...
-    user._set_password = password
+    user.password = password
     session.add(user)
     session.commit()
     session.close()
