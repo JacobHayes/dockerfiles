@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+""" Creates database level Airflow Connections based on the env vars.id
+
+Parts of the Airflow webserver do not support env var connections because they are model based views that only look at
+the database. This attempts to bridge the gap by creating (or updating) Connection database objects from the env vars.
+"""
+import os
+import logging
+
+from airflow import settings
+from airflow.hooks.base_hook import CONN_ENV_PREFIX
+from airflow.models import Connection
+
+def get_new_conns(sess):
+    for name, value in os.environ.items():
+        if name.startswith(CONN_ENV_PREFIX):
+            conn_id = name[len(CONN_ENV_PREFIX):].lower()
+            # Connections aren't unique on conn_id or anything, so hoping there aren't multiple
+            conn = sess.query(Connection).filter(Connection.conn_id == conn_id).one_or_none()
+            if conn:
+                logging.info("Replacing existing {} connection.".format(conn_id))
+                conn.parse_from_uri(value)
+            else:
+                logging.info("Creating new {} connection.".format(conn_id))
+                conn = Connection(
+                    conn_id=conn_id,
+                    uri=value
+                )
+            yield conn
+
+
+if __name__ == '__main__':
+    session = settings.Session()
+    session.add_all(get_new_conns(session))
+    session.commit()
+    session.close()

@@ -23,6 +23,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
 
 WORKDIR "${WORKDIR}"
-COPY create-user /usr/local/bin/
 COPY entrypoint.sh /
+COPY helpers/* /usr/local/bin/
 ENTRYPOINT ["/entrypoint.sh"]
