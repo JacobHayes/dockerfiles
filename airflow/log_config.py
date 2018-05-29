@@ -22,8 +22,7 @@
 # This file is taken from apache/incubator-airflow/airflow/config_templates/airflow_local_settings.py as of
 # 11e670ddbce419489c798f26d3e94e7d3a00f5eb. Since we're running 1.9.0 (not master) the `console` handler had to be set
 # back to using logging.StreamHandler instead of airflow.utils.log.logging_mixin.RedirectStdHandler, which isn't
-# included. Everything else should be the default, but note that the wasb and elasticsearch handlers won't work because
-# those modules aren't in the 1.9.0 package.
+# included. Things that don't apply for 1.9.0 have been commented out, such as elasticsearch and azure logging.
 ########################################################################################################################
 
 import os
@@ -51,7 +50,7 @@ FILENAME_TEMPLATE = '{{ ti.dag_id }}/{{ ti.task_id }}/{{ ts }}/{{ try_number }}.
 
 PROCESSOR_FILENAME_TEMPLATE = '{{ filename }}.log'
 
-LOG_ID_TEMPLATE = '{dag_id}-{task_id}-{execution_date}-{try_number}'
+# LOG_ID_TEMPLATE = '{dag_id}-{task_id}-{execution_date}-{try_number}'
 
 # Storage bucket url for remote logging
 # s3 buckets should start with "s3://"
@@ -60,9 +59,9 @@ LOG_ID_TEMPLATE = '{dag_id}-{task_id}-{execution_date}-{try_number}'
 # just to help Airflow select correct handler
 REMOTE_BASE_LOG_FOLDER = conf.get('core', 'REMOTE_BASE_LOG_FOLDER')
 
-ELASTICSEARCH_HOST = conf.get('elasticsearch', 'ELASTICSEARCH_HOST')
+# ELASTICSEARCH_HOST = conf.get('elasticsearch', 'ELASTICSEARCH_HOST')
 
-END_OF_LOG_MARK = 'end_of_log'
+# END_OF_LOG_MARK = 'end_of_log'
 
 DEFAULT_LOGGING_CONFIG = {
     'version': 1,
@@ -147,37 +146,37 @@ REMOTE_HANDLERS = {
             'filename_template': PROCESSOR_FILENAME_TEMPLATE,
         },
     },
-    'wasb': {
-        'task': {
-            'class': 'airflow.utils.log.wasb_task_handler.WasbTaskHandler',
-            'formatter': 'airflow',
-            'base_log_folder': os.path.expanduser(BASE_LOG_FOLDER),
-            'wasb_log_folder': REMOTE_BASE_LOG_FOLDER,
-            'wasb_container': 'airflow-logs',
-            'filename_template': FILENAME_TEMPLATE,
-            'delete_local_copy': False,
-        },
-        'processor': {
-            'class': 'airflow.utils.log.wasb_task_handler.WasbTaskHandler',
-            'formatter': 'airflow',
-            'base_log_folder': os.path.expanduser(PROCESSOR_LOG_FOLDER),
-            'wasb_log_folder': REMOTE_BASE_LOG_FOLDER,
-            'wasb_container': 'airflow-logs',
-            'filename_template': PROCESSOR_FILENAME_TEMPLATE,
-            'delete_local_copy': False,
-        },
-    },
-    'elasticsearch': {
-        'task': {
-            'class': 'airflow.utils.log.es_task_handler.ElasticsearchTaskHandler',
-            'formatter': 'airflow',
-            'base_log_folder': os.path.expanduser(BASE_LOG_FOLDER),
-            'log_id_template': LOG_ID_TEMPLATE,
-            'filename_template': FILENAME_TEMPLATE,
-            'end_of_log_mark': END_OF_LOG_MARK,
-            'host': ELASTICSEARCH_HOST,
-        },
-    },
+    # 'wasb': {
+    #     'task': {
+    #         'class': 'airflow.utils.log.wasb_task_handler.WasbTaskHandler',
+    #         'formatter': 'airflow',
+    #         'base_log_folder': os.path.expanduser(BASE_LOG_FOLDER),
+    #         'wasb_log_folder': REMOTE_BASE_LOG_FOLDER,
+    #         'wasb_container': 'airflow-logs',
+    #         'filename_template': FILENAME_TEMPLATE,
+    #         'delete_local_copy': False,
+    #     },
+    #     'processor': {
+    #         'class': 'airflow.utils.log.wasb_task_handler.WasbTaskHandler',
+    #         'formatter': 'airflow',
+    #         'base_log_folder': os.path.expanduser(PROCESSOR_LOG_FOLDER),
+    #         'wasb_log_folder': REMOTE_BASE_LOG_FOLDER,
+    #         'wasb_container': 'airflow-logs',
+    #         'filename_template': PROCESSOR_FILENAME_TEMPLATE,
+    #         'delete_local_copy': False,
+    #     },
+    # },
+    # 'elasticsearch': {
+    #     'task': {
+    #         'class': 'airflow.utils.log.es_task_handler.ElasticsearchTaskHandler',
+    #         'formatter': 'airflow',
+    #         'base_log_folder': os.path.expanduser(BASE_LOG_FOLDER),
+    #         'log_id_template': LOG_ID_TEMPLATE,
+    #         'filename_template': FILENAME_TEMPLATE,
+    #         'end_of_log_mark': END_OF_LOG_MARK,
+    #         'host': ELASTICSEARCH_HOST,
+    #     },
+    # },
 }
 
 REMOTE_LOGGING = conf.get('core', 'remote_logging')
@@ -186,7 +185,7 @@ if REMOTE_LOGGING and REMOTE_BASE_LOG_FOLDER.startswith('s3://'):
     DEFAULT_LOGGING_CONFIG['handlers'].update(REMOTE_HANDLERS['s3'])
 elif REMOTE_LOGGING and REMOTE_BASE_LOG_FOLDER.startswith('gs://'):
     DEFAULT_LOGGING_CONFIG['handlers'].update(REMOTE_HANDLERS['gcs'])
-elif REMOTE_LOGGING and REMOTE_BASE_LOG_FOLDER.startswith('wasb'):
-    DEFAULT_LOGGING_CONFIG['handlers'].update(REMOTE_HANDLERS['wasb'])
-elif REMOTE_LOGGING and ELASTICSEARCH_HOST:
-    DEFAULT_LOGGING_CONFIG['handlers'].update(REMOTE_HANDLERS['elasticsearch'])
+# elif REMOTE_LOGGING and REMOTE_BASE_LOG_FOLDER.startswith('wasb'):
+#     DEFAULT_LOGGING_CONFIG['handlers'].update(REMOTE_HANDLERS['wasb'])
+# elif REMOTE_LOGGING and ELASTICSEARCH_HOST:
+#     DEFAULT_LOGGING_CONFIG['handlers'].update(REMOTE_HANDLERS['elasticsearch'])
