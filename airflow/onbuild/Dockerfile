@@ -1,3 +1,4 @@
+# TAG jacobhayes/airflow:onbuild
 FROM jacobhayes/airflow
 
 # APT Requirements

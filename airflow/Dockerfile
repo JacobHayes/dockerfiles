@@ -1,3 +1,4 @@
+# TAG jacobhayes/airflow
 FROM debian:stretch
 
 ENV BUILDDIR="/usr/src/build/" \
