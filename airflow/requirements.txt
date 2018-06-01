@@ -2,6 +2,10 @@
 # haven't been any releases since 1.9.0.
 
 https://github.com/apache/incubator-airflow/tarball/3ed25a9459a2a0b26b849b1a3ea7906f26a33707
+# [async]
+    greenlet>=0.4.9
+    eventlet>= 0.9.7
+    gevent>=0.13
 # [crypto]
     # Bumped from >=0.9.3 to fix pip install issues
     cryptography>=2.2.1
