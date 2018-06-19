@@ -15,8 +15,10 @@ RUN apt-get update && \
   xargs apt-get install -y < apt-requirements.txt && \
   rm -rf /var/lib/apt/lists/* && apt-get clean
 # Python Requirements
-COPY requirements.txt .
-RUN pip3 install -r requirements.txt --no-cache-dir
+# Update cryptography to fix pyOpenssl issues
+RUN pip3 install --no-cache-dir pipenv "cryptography>=2.2.1"
+COPY Pipfile Pipfile.lock ./
+RUN pipenv install --system --ignore-pipfile
 
 WORKDIR "${WORKDIR}"
 ENV AIRFLOW_HOME="${WORKDIR}" \
