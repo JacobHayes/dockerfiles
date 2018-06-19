@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 Bottleneck = "*"
-apache-airflow = {editable = true, extras = ["crypto","dask","gcp_api","password","postgres"], git = "https://github.com/apache/incubator-airflow.git", ref = "3ed25a9459a2a0b26b849b1a3ea7906f26a33707"}
+apache-airflow = {editable = true, extras = ["crypto","dask","gcp_api","password","postgres"], git = "https://github.com/apache/incubator-airflow.git", ref = "ecf68c7d3133b2cb9847b2f21b674482cd076358"}
 dask = {extras = ["complete"]}
 numexpr = "*"
 pandas = "*"

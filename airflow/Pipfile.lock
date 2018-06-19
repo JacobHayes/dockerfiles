@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ead6f712875ecde7d2b9af1be9b4439a74e9b9e4bc8d42d8dd15c2aba8e43433"
+            "sha256": "b832689cbe11ea8443f9167e33068978efbab3a7eb8a2ccbdb648a3d6c7e057d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,7 +32,7 @@
                 "postgres"
             ],
             "git": "https://github.com/apache/incubator-airflow.git",
-            "ref": "3ed25a9459a2a0b26b849b1a3ea7906f26a33707"
+            "ref": "ecf68c7d3133b2cb9847b2f21b674482cd076358"
         },
         "asn1crypto": {
             "hashes": [
@@ -140,7 +140,6 @@
                 "sha256:edabd457cd23a02965166026fd9bfd196f4324fe6032e866d0f3bd0301cd486f",
                 "sha256:fdf1c1dc5bafc32bc5d08b054f94d659422b05aba244d6be4ddc1c72d9aa70fb"
             ],
-            "markers": "platform_python_implementation != 'pypy'",
             "version": "==1.11.5"
         },
         "chardet": {
@@ -345,11 +344,10 @@
         },
         "google-api-python-client": {
             "hashes": [
-                "sha256:12f9f2490341a598e7d16b1c8f1af58f3157dad65705f88d28eddad01fdc6f77",
-                "sha256:3293fd1d0b810963d313557b299ea7e7247b6f8f214ce75ee5f4c31f79dafb14",
-                "sha256:c9f6bf15c76b05a3c2e301a5509e97f11c5902fb6b03dcb7faf5b5337c66f557"
+                "sha256:876b974612c6d9b5de348079b706500bd170e7fdab30b9a4b72758d129cd64dc",
+                "sha256:e32d30563b90c4f88ff042d4d891b5e8ed1f6cdca0adab95e9c2ce2603087436"
             ],
-            "version": "==1.5.5"
+            "version": "==1.7.3"
         },
         "google-auth": {
             "hashes": [
@@ -357,6 +355,13 @@
                 "sha256:82a34e1a59ad35f01484d283d2a36b7a24c8c404a03a71b3afddd0a4d31e169f"
             ],
             "version": "==1.5.0"
+        },
+        "google-auth-httplib2": {
+            "hashes": [
+                "sha256:098fade613c25b4527b2c08fa42d11f3c2037dda8995d86de0745228e965d445",
+                "sha256:f1c437842155680cf9918df9bc51c1182fda41feef88c34004bd1978c8157e08"
+            ],
+            "version": "==0.0.3"
         },
         "google-auth-oauthlib": {
             "hashes": [
@@ -371,6 +376,13 @@
                 "sha256:d2791bbfe4e569b12436a3ef4c57c20f33105a037b3550d4de71fdf8d30bea45"
             ],
             "version": "==1.3.0"
+        },
+        "google-cloud-container": {
+            "hashes": [
+                "sha256:275de3032de5696cd976459966e911abd3a1b624c7a918a8137a0308898e4f90",
+                "sha256:a89afcb1fe96bc9361c231c223c3bbe19fa3787caeb4697cd5778990e1077270"
+            ],
+            "version": "==0.1.1"
         },
         "google-cloud-core": {
             "hashes": [
@@ -391,6 +403,38 @@
                 "sha256:c075eddaa2628ab519e01b7d75b76e66c40eaa50fc52758d8225f84708950ef2"
             ],
             "version": "==1.5.3"
+        },
+        "grpcio": {
+            "hashes": [
+                "sha256:0feade5de967be3c9ee041662d1347fc537ad05ccbcf05bcf1efa05072bef926",
+                "sha256:1ae02a9787cf2c5f25add0806f6271283b6074ab8619077d2b5c9037950c890b",
+                "sha256:2d7215dca11ba4aa49cc6c05b37e4b0a0f99727c8604e8ccd5ef1f6e06332200",
+                "sha256:35a4f6ffae88ce6a461e503ae91b62dc5c96013cafc717f2d7139686b5c39969",
+                "sha256:3be7635b4308e06449b2275a5e96a030bbf82ba6797ae8947f14667491924d81",
+                "sha256:3d1b3e7042a41b167334f718842f13deb80287886c9160efe31252602b13a128",
+                "sha256:468d4ce007cb859d5f9440cf4a7461cc172fd07d690300f4db88afaa78f01003",
+                "sha256:59a2fb52d286a38b9cbc7434eb473026fde0b20c223a10a99f5c3d4e395c2c2b",
+                "sha256:59c7670c902acce952ba709d9126cda87a45d7fed6bd568868e74171e4acd7f7",
+                "sha256:5b03fd3941c5e1a5deb01026bae025d319b38d3facb3e5fc491bca73e908d69e",
+                "sha256:65842e698776f4e49f62346c0f80fc31b34907e0df4247650c643113ef167122",
+                "sha256:68dbe71f890475e2824afbc5dc72714d1fca668bc15df0954bda4a8a5a53d0c7",
+                "sha256:868973b64b7e2464e5297cc660da588c542c175e85f6d2f7490d86c0dd5dbb4c",
+                "sha256:86f0c2062fde76789f7cdbf67d4ede116e7e1ceaf4c327fff7b9d17eb5852403",
+                "sha256:9444863aaba55b662719e22680f11134182604619f241cc607020e5b3786f4cd",
+                "sha256:9ac704e25d271af62c1ea72f1cb42ec7938f26f00314a8f324999ac5e1bf55eb",
+                "sha256:a02ef0354fb455a9ce2ad869a40f28f20a64147d46557c59b7269a15832c36d2",
+                "sha256:aabcdc960633231f9575252c061b480fc56a1ff6dcc7999fa5d4968f574d894f",
+                "sha256:b47a19a3be2f9608b4296bd16374c9a922d3206cf0a917792801a5cef5a2fa23",
+                "sha256:bf7bfe162057e6f1e3f4613b2a5f1157c8e286bddeaa40f7b8ce5054cb4b1413",
+                "sha256:c3cf3f431b41c39aa1501458d0e46086e699836536af873fe028dda1dfc6bcbd",
+                "sha256:cc7bd47eca988831d58a618908c825204d6ee8e90cdb9854a09b52a3b76ac168",
+                "sha256:cde83440fb4691d1bd8620ea919a9bd3199e6725e72d2c0d94898a2774c255ee",
+                "sha256:e1a03666852b956f7949c2a7f187dd54406cae2874c2ce26c1a0dafddf812cb2",
+                "sha256:e322eb5dc533cfbf21a9e964ebab80da391a26234a82288bfce505058913dfac",
+                "sha256:f0169d98670ef1db52e4f6930fd470c34731948350cabbe93087a8462b1f1da4",
+                "sha256:f14faadfd09aa8526536cd2149e274563f45b767fca1736ccc53803a6af3f90e"
+            ],
+            "version": "==1.12.1"
         },
         "gunicorn": {
             "hashes": [
@@ -605,12 +649,6 @@
                 "sha256:e1864a4e9f93ddb2dc6b62ccc2ec1f8250ff4ac0d3d7a15c8985dd4e1fbd6418"
             ],
             "version": "==1.14.5"
-        },
-        "oauth2client": {
-            "hashes": [
-                "sha256:c9f7bf68e9d0f9ec055f1f2f487e5ea53b97b7a2b82f01d48d9a9bb68239535a"
-            ],
-            "version": "==2.0.2"
         },
         "oauthlib": {
             "hashes": [
@@ -984,6 +1022,12 @@
                 "sha256:4ebeb848845ac898da6519b9b31879cf13b6626f7184c496037b818e238f2c4e"
             ],
             "version": "==1.5.1"
+        },
+        "unicodecsv": {
+            "hashes": [
+                "sha256:018c08037d48649a0412063ff4eda26eaa81eff1546dbffa51fa5293276ff7fc"
+            ],
+            "version": "==0.14.1"
         },
         "unidecode": {
             "hashes": [
