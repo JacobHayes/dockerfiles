@@ -22,7 +22,7 @@ RUN pipenv install --system --ignore-pipfile
 
 WORKDIR "${WORKDIR}"
 ENV AIRFLOW_HOME="${WORKDIR}" \
-    AIRFLOW__CORE__AIRFLOW_HOME="${WORKDIR}"
-COPY entrypoint.sh /
+    AIRFLOW__CORE__AIRFLOW_HOME="${WORKDIR}" \
+    AIRFLOW__CORE__LOAD_EXAMPLES="False"
 COPY helpers/* /usr/local/bin/
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["airflow"]

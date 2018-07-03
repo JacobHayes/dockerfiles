@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Creates database level Airflow Connections based on the env vars.id
+""" Creates database level Airflow Connections based on env vars.
 
 Parts of the Airflow webserver do not support env var connections because they are model based views that only look at
 the database. This attempts to bridge the gap by creating (or updating) Connection database objects from the env vars.
