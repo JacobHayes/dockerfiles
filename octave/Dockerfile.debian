@@ -7,7 +7,7 @@
 #    --workdir=/host \
 #    jacobhayes/octave:debian
 FROM debian:stretch-backports
-ENV VERSION 4.2.2-1~bpo9+1
+ENV VERSION 4.4.0-3~bpo9+1
 LABEL maintainer "Jacob Hayes <jacob.r.hayes@gmail.com>"
 LABEL version $VERSION
 
