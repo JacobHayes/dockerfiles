@@ -4,11 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-Bottleneck = "*"
-apache-airflow = {editable = true, extras = ["crypto","dask","gcp_api","password","postgres"], git = "https://github.com/apache/incubator-airflow.git", ref = "ecf68c7d3133b2cb9847b2f21b674482cd076358"}
-dask = {extras = ["complete"]}
-numexpr = "*"
-pandas = "*"
+apache-airflow = {editable = true, extras = ["crypto","gcp_api","password","postgres"], git = "https://github.com/apache/incubator-airflow.git", ref = "985a433a8d03906edfa49a99aa86c026769aff57"}
 
 [dev-packages]
 
