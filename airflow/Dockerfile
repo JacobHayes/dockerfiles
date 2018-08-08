@@ -1,5 +1,5 @@
 # TAG jacobhayes/airflow
-FROM debian:stretch
+FROM python:3.7-slim
 
 ENV BUILDDIR="/usr/src/build/" \
     WORKDIR="/usr/src/app/"
@@ -9,16 +9,15 @@ ENV LANG="C.UTF-8" \
     LC_ALL="C.UTF-8"
 
 WORKDIR "${BUILDDIR}"
-# APT Requirements
+# APT Requirements - Airflow deps require compiled packages
 COPY apt-requirements.txt .
 RUN apt-get update && \
-  xargs apt-get install -y < apt-requirements.txt && \
-  rm -rf /var/lib/apt/lists/* && apt-get clean
+    xargs apt-get install -y < apt-requirements.txt && \
+    rm -rf /var/lib/apt/lists/* && apt-get clean
 # Python Requirements
-# Update cryptography to fix pyOpenssl issues
-RUN pip3 install --no-cache-dir pipenv "cryptography>=2.2.1"
+RUN pip3 install --no-cache-dir pipenv
 COPY Pipfile Pipfile.lock ./
-RUN pipenv install --system --ignore-pipfile
+RUN SLUGIFY_USES_TEXT_UNIDECODE=yes pipenv install --deploy --system
 
 WORKDIR "${WORKDIR}"
 ENV AIRFLOW_HOME="${WORKDIR}" \

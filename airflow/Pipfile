@@ -1,12 +1,5 @@
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
-
 [packages]
-apache-airflow = {editable = true, extras = ["crypto","gcp_api","password","postgres"], git = "https://github.com/apache/incubator-airflow.git", ref = "985a433a8d03906edfa49a99aa86c026769aff57"}
-
-[dev-packages]
+apache-airflow = {editable = true, extras = ["crypto","gcp_api","password","postgres"], git = "https://github.com/apache/incubator-airflow.git", ref = "9131d6cc8fce515222da6e4ab9d86cce69f20d1e"}
 
 [requires]
 python_version = "3"
