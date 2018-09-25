@@ -1,5 +1,10 @@
 [packages]
-apache-airflow = {editable = true, extras = ["crypto","gcp_api","password","postgres"], git = "https://github.com/apache/incubator-airflow.git", ref = "9131d6cc8fce515222da6e4ab9d86cce69f20d1e"}
+
+[packages.apache-airflow]
+editable = true
+extras = ["crypto", "gcp_api", "kubernetes", "password", "postgres"]
+git = "https://github.com/apache/incubator-airflow.git"
+ref = "19515e816785a6be828ec0191b9a7d83c9648110"
 
 [requires]
-python_version = "3"
+python_version = "3.7"
