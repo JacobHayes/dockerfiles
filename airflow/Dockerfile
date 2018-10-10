@@ -16,7 +16,7 @@ RUN apt-get update && \
     xargs apt-get install -y < apt-requirements.txt && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
 # Python Requirements
-RUN pip3 install --no-cache-dir pipenv
+RUN pip3 install --no-cache-dir pipenv==v2018.05.18
 COPY Pipfile Pipfile.lock ./
 RUN pipenv install --deploy --system
 RUN apt-get update && \
