@@ -16,9 +16,10 @@ RUN apt-get update && \
     xargs apt-get install -y < apt-requirements.txt && \
     rm -rf /var/lib/apt/lists/* && apt-get clean
 # Python Requirements
-RUN pip3 install --no-cache-dir pipenv==v2018.05.18
+RUN pip3 install --no-cache-dir pipenv==v2018.10.13
 COPY Pipfile Pipfile.lock ./
 RUN pipenv install --deploy --system
+# Compile the static assets - these are only generated/bundled with releases.
 RUN apt-get update && \
     apt-get install -y curl gnupg && \
     curl -sL https://deb.nodesource.com/setup_10.x | \
@@ -33,5 +34,4 @@ WORKDIR "${WORKDIR}"
 ENV AIRFLOW_HOME="${WORKDIR}" \
     AIRFLOW__CORE__AIRFLOW_HOME="${WORKDIR}" \
     AIRFLOW__CORE__LOAD_EXAMPLES="False"
-COPY helpers/* /usr/local/bin/
 ENTRYPOINT ["airflow"]

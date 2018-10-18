@@ -4,7 +4,7 @@
 editable = true
 extras = ["crypto", "gcp_api", "kubernetes", "password", "postgres"]
 git = "https://github.com/apache/incubator-airflow.git"
-ref = "19515e816785a6be828ec0191b9a7d83c9648110"
+ref = "f5e3b03aa6b902898148e88fb9d90ecebcadc226"
 
 [requires]
 python_version = "3.7"
